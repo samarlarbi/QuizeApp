@@ -14,8 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Home(),
-      theme: lightMode,
-      darkTheme: Provider.of<ThemeProvider>(context).themeData,
+      theme:  Provider.of<ThemeProvider>(context).themeData,
     );
   }
 }
@@ -27,38 +26,38 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String message = 'Loadinggg...';
-
+ 
   @override
   void initState() {
     super.initState();
   }
 
-  Future<void> _fetchMessage() async {
-    print("Fetching message from the API...");
-    try {
-      final fetchedMessage =
-          await ApiService.fetchMessage().timeout(Duration(seconds: 15));
-      print("Message fetched successfully: $fetchedMessage");
-      setState(() {
-        message = fetchedMessage;
-      });
-    } catch (e) {
-      print("Error fetching message: $e");
-      setState(() {
-        message = 'Error: Something went wrong. Please try again later.';
-      });
-    }
-  }
+  // Future<void> _fetchMessage() async {
+  //   print("Fetching message from the API...");
+  //   try {
+  //     final fetchedMessage =
+  //         await ApiService.fetchMessage().timeout(Duration(seconds: 15));
+  //     print("Message fetched successfully: $fetchedMessage");
+  //     setState(() {
+  //       message = fetchedMessage;
+  //     });
+  //   } catch (e) {
+  //     print("Error fetching message: $e");
+  //     setState(() {
+  //       message = 'Error: Something went wrong. Please try again later.';
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Center(
+      body: Center(     
           child: MaterialButton(
         child: Text("hi"),
         onPressed: () {
-          Provider.of<ThemeProvider>(context).toggleTheme();
+          Provider.of<ThemeProvider>(context ,listen: false).toggleTheme();
         },
       )),
     );
