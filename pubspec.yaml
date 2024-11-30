@@ -41,7 +41,10 @@ dependencies:
   linear_progress_bar: ^1.1.0
   dark_light_button: ^0.0.2
   flutter_carousel_widget: ^3.1.0
-  google_fonts: ^6.2.0
+  fluttermoji: ^1.0.2
+  random_avatar: ^0.0.8
+  font_awesome_flutter: ^10.8.0
+  google_fonts: ^4.0.5
 
 
 dev_dependencies:

@@ -17,6 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/quiz': (context) => QuizScreen(),
+      },
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
+    
       background: Color.fromARGB(255, 244, 244, 244), // Light background
       primary: Color.fromARGB(255, 62, 21, 137), // Purple
       secondary: Color.fromARGB(255, 185, 99, 99), // Muted Red
@@ -19,6 +20,7 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
+    
       background: Color.fromARGB(255, 35, 11, 79), // Dark Purple
       primary: Colors.white, // White text
       secondary: Color.fromARGB(255, 241, 219, 237), // Pale Pink

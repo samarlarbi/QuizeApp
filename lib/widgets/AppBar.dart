@@ -1,8 +1,10 @@
 import 'package:dark_light_button/dark_light_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:random_avatar/random_avatar.dart';
 
 import '../theme/theme_provider.dart';
+import 'package:fluttermoji/fluttermoji.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -25,16 +27,25 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       backgroundColor: Theme.of(context).colorScheme.background,
       actions: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: DarlightButton(
-              type: Darlights.DarlightTwo,
-              onChange: (ThemeMode theme) {
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme();
-              },
-              options: DarlightTwoOption()),
+        RandomAvatar(
+          'saytoonz',
+          trBackground: true,
+          height: 70,
+          width: 70,
         ),
+        SizedBox(
+          width: 10,
+        ),
+        // Padding(
+        //   padding: const EdgeInsets.all(10.0),
+        //   child: DarlightButton(
+        //       type: Darlights.DarlightTwo,
+        //       onChange: (ThemeMode theme) {
+        //         Provider.of<ThemeProvider>(context, listen: false)
+        //             .toggleTheme();
+        //       },
+        //       options: DarlightTwoOption()),
+        // ),
       ],
     );
   }

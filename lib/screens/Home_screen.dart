@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:quizeapp/constants.dart';
 import 'package:quizeapp/theme/theme.dart';
 import 'package:quizeapp/widgets/AppBar.dart';
 import 'package:quizeapp/widgets/categoryWidget.dart';
@@ -37,6 +38,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: MyAppBar(),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           gradient: Provider.of<ThemeProvider>(context).themeData == darkMode
               ? null
@@ -85,7 +87,7 @@ class _HomeState extends State<Home> {
                       builder: (BuildContext context) {
                         return Container(
                           width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(top: 15, left: 15, right: 15),
+                          margin: EdgeInsets.only(top: 15, right: 7),
                           padding: EdgeInsets.all(5.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -131,7 +133,57 @@ class _HomeState extends State<Home> {
                     );
                   }).toList(),
                 ),
-                Wrap(
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Create Quiz",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        fixedSize: MaterialStateProperty.all(
+                            Size(MediaQuery.of(context).size.width * 0.45, 50)),
+                        backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Color.fromARGB(255, 136, 147, 234),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Join Quiz",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                        fixedSize: MaterialStateProperty.all(
+                            Size(MediaQuery.of(context).size.width * 0.45, 50)),
+                        backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Color.fromARGB(255, 237, 184, 124),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                const Wrap(
+                  spacing: 10,
+                  runSpacing: 25,
+                  alignment: WrapAlignment.spaceBetween,
                   children: [
                     Category(
                         color: Color.fromARGB(100, 247, 200, 200),
@@ -142,17 +194,17 @@ class _HomeState extends State<Home> {
                         color: Color.fromARGB(100, 247, 234, 200),
                         title: "geography",
                         questionNumber: 15,
-                        icon: Icons.sports_baseball_rounded),
+                        icon: Icons.music_note),
                     Category(
                         color: Color.fromARGB(98, 247, 221, 200),
                         title: "geography",
                         questionNumber: 15,
-                        icon: Icons.sports_baseball_rounded),
+                        icon: Icons.public),
                     Category(
                         color: Color.fromARGB(100, 247, 200, 229),
                         title: "geography",
                         questionNumber: 15,
-                        icon: Icons.sports_baseball_rounded),
+                        icon: Icons.sports_football),
                     Category(
                         color: Color.fromARGB(100, 208, 200, 247),
                         title: "geography",
@@ -162,14 +214,29 @@ class _HomeState extends State<Home> {
                         color: Color.fromARGB(100, 247, 200, 200),
                         title: "geography",
                         questionNumber: 15,
-                        icon: Icons.sports_baseball_rounded),
+                        icon: Icons.piano),
                     Category(
-                        color: Color.fromARGB(100, 247, 200, 200),
+                        color: Color.fromARGB(99, 200, 247, 233),
+                        title: "geography",
+                        questionNumber: 15,
+                        icon: Icons.menu_book_rounded),
+                    Category(
+                        color: Color.fromARGB(99, 200, 233, 247),
                         title: "geography",
                         questionNumber: 15,
                         icon: Icons.sports_baseball_rounded),
                     Category(
-                        color: Color.fromARGB(100, 247, 200, 200),
+                        color: Color.fromARGB(99, 247, 200, 244),
+                        title: "geography",
+                        questionNumber: 15,
+                        icon: Icons.sports_baseball_rounded),
+                    Category(
+                        color: Color.fromARGB(99, 209, 200, 247),
+                        title: "geography",
+                        questionNumber: 15,
+                        icon: Icons.sports_baseball_rounded),
+                    Category(
+                        color: Color.fromARGB(99, 224, 247, 200),
                         title: "geography",
                         questionNumber: 15,
                         icon: Icons.sports_baseball_rounded)
