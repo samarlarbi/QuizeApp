@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color correct = Color.fromARGB(0, 18, 208, 18);
-const Color incorrect = Color.fromARGB(0, 208, 18, 18);
-const Color neutral = Color.fromARGB(0, 126, 126, 126);
+const Color incorrect = Color.fromARGB(255, 210, 120, 120);
+const Color correct = Color.fromARGB(255, 114, 180, 115);
+const Color neutral = Color.fromARGB(255, 126, 126, 126);
+const Color Yellow = Color.fromARGB(255, 202, 166, 6);
