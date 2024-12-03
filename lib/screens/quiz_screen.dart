@@ -9,25 +9,53 @@ import 'package:flutter/material.dart';
 import '../theme/theme.dart';
 import '../theme/theme_provider.dart';
 
+// Default Question
+
+// QuizScreen Widget
 class QuizScreen extends StatefulWidget {
+  final Question question;
+
+  const QuizScreen({
+    Key? key,
+    required this.question, // Use the constant default question
+  }) : super(key: key);
+
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  String level = "level 1 ";
+  String level = "2";
   bool test = false;
-  final Question question = Question(
+  Question question2 = Question(
       id: '1',
       category: 'Geography',
-      title: "what the capital capital capital of France",
+      title: "what the capital capital capital of eygpt ",
       options: {
-        'paris': true,
+        'roma': false,
         'gabes': false,
-        'NewYork': false,
+        'kahera': true,
       });
-
   String? selectedOption;
+  void next() {
+    setState(() {
+      if (test == true) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizScreen(
+              question: question2,
+            ),
+          ),
+        );
+      } else {
+        selectedOption = "*";
+
+        test = false;
+      }
+    });
+    ;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +71,7 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         centerTitle: true,
         title: Text(
-          question.category,
+          widget.question.category,
           style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.bold),
@@ -125,7 +153,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 color: Theme.of(context).colorScheme.onBackground,
               ),
               child: Text(
-                question.title + " ?",
+                widget.question.title + " ?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.secondary,
@@ -138,7 +166,7 @@ class _QuizScreenState extends State<QuizScreen> {
           Padding(
               padding: EdgeInsets.all(20.0),
               child: Column(children: [
-                ...question.options.keys.map((option) {
+                ...widget.question.options.keys.map((option) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 15.0),
                     child: Container(
@@ -149,7 +177,8 @@ class _QuizScreenState extends State<QuizScreen> {
                               color: selectedOption == option && test
                                   ? correct
                                   : selectedOption != null &&
-                                          question.options[option] == true
+                                          widget.question.options[option] ==
+                                              true
                                       ? correct
                                       : selectedOption == option &&
                                               test == false
@@ -165,7 +194,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                   color: correct,
                                 )
                               : selectedOption != null &&
-                                      question.options[option] == true
+                                      widget.question.options[option] == true
                                   ? Icon(
                                       Icons.check_circle,
                                       color: correct,
@@ -186,7 +215,8 @@ class _QuizScreenState extends State<QuizScreen> {
                               color: selectedOption == option && test
                                   ? correct
                                   : selectedOption != null &&
-                                          question.options[option] == true
+                                          widget.question.options[option] ==
+                                              true
                                       ? correct
                                       : selectedOption == option &&
                                               test == false
@@ -199,7 +229,8 @@ class _QuizScreenState extends State<QuizScreen> {
                           onTap: () {
                             setState(() {
                               selectedOption = option;
-                              if (question.options[selectedOption] == true) {
+                              if (widget.question.options[selectedOption] ==
+                                  true) {
                                 test = true;
                               }
                             });
@@ -213,7 +244,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     fixedSize: Size(MediaQuery.of(context).size.width * 1, 50),
                   ),
-                  onPressed: () {},
+                  onPressed: next,
                   child: Text(
                     "Next",
                   ),
