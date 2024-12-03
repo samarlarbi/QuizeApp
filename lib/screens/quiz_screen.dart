@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dark_light_button/dark_light_button.dart';
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
@@ -25,10 +27,9 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  String level = "2";
   bool test = false;
   Question question2 = Question(
-      id: '1',
+      id: '2',
       category: 'Geography',
       title: "what the capital capital capital of eygpt ",
       options: {
@@ -37,9 +38,15 @@ class _QuizScreenState extends State<QuizScreen> {
         'kahera': true,
       });
   String? selectedOption;
-  void next() {
+  bool show_button = false;
+  void next(option) {
     setState(() {
+      selectedOption = option;
+      if (widget.question.options[selectedOption] == true) {
+        test = true;
+      }
       if (test == true) {
+        ///////////sleep here 1 sec
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -49,9 +56,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         );
       } else {
-        selectedOption = "*";
-
-        test = false;
+        show_button = true;
       }
     });
     ;
@@ -111,7 +116,7 @@ class _QuizScreenState extends State<QuizScreen> {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
             child: Text(
-              level,
+              widget.question.id,
               style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontFamily: 'arial',
@@ -226,29 +231,34 @@ class _QuizScreenState extends State<QuizScreen> {
                                               .secondaryVariant,
                             ),
                           ),
-                          onTap: () {
-                            setState(() {
-                              selectedOption = option;
-                              if (widget.question.options[selectedOption] ==
-                                  true) {
-                                test = true;
-                              }
-                            });
-                          }),
+                          onTap: () => next(option)),
                     ),
                   );
                 }).toList(),
                 Divider(height: 20, thickness: 1, color: Colors.transparent),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    fixedSize: Size(MediaQuery.of(context).size.width * 1, 50),
-                  ),
-                  onPressed: next,
-                  child: Text(
-                    "Next",
-                  ),
-                ),
+                show_button
+                    ? ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          fixedSize:
+                              Size(MediaQuery.of(context).size.width * 1, 50),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuizScreen(
+                                question: question2,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Skipp",
+                        ),
+                      )
+                    : Padding(padding: EdgeInsets.all(1)),
               ]))
         ]),
       ),
