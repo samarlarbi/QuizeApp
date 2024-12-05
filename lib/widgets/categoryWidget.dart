@@ -26,27 +26,17 @@ class Category extends StatelessWidget {
         })
       },
       child: Container(
-        
         width: MediaQuery.of(context).size.width * 0.45,
         child: Stack(
-          
           clipBehavior: Clip.none, // Allows overflow for the icon
           children: [
             // Box with text
             Container(
-              
               padding: const EdgeInsets.only(top: 35, left: 20, bottom: 35),
               width: MediaQuery.of(context).size.width * 0.5,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: color,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(209, 209, 206, 206).withOpacity(0.5),
-                    blurRadius: 4,
-                    offset: const Offset(5, 5),
-                  )
-                ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -80,7 +70,8 @@ class Category extends StatelessWidget {
                 weight: 900,
                 shadows: [
                   Shadow(
-                    color: const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
+                    color:
+                        const Color.fromARGB(255, 66, 66, 66).withOpacity(0.5),
                     blurRadius: 4,
                     offset: const Offset(-2, 2),
                   )

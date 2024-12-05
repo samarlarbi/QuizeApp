@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizeapp/screens/Home_screen.dart';
+import 'package:quizeapp/screens/create_quiz.dart';
+import 'package:quizeapp/screens/join_quiz.dart';
 import 'package:quizeapp/screens/quiz_screen.dart';
 import 'package:quizeapp/theme/theme.dart';
 import 'package:quizeapp/theme/theme_provider.dart';
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/quiz': (context) => QuizScreen(
               question: questiond,
             ),
+        '/create_quiz': (context) => CreateQuizScreen(),
       },
       theme: Provider.of<ThemeProvider>(context).themeData,
     );

@@ -140,7 +140,9 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/create_quiz');
+                      },
                       child: Text(
                         "Create Quiz",
                         style: TextStyle(
@@ -153,7 +155,7 @@ class _HomeState extends State<Home> {
                         fixedSize: MaterialStateProperty.all(
                             Size(MediaQuery.of(context).size.width * 0.45, 50)),
                         backgroundColor: MaterialStateColor.resolveWith(
-                          (states) => Color.fromARGB(255, 136, 147, 234),
+                          (states) => Color.fromARGB(255, 188, 188, 189),
                         ),
                       ),
                     ),
@@ -171,7 +173,7 @@ class _HomeState extends State<Home> {
                         fixedSize: MaterialStateProperty.all(
                             Size(MediaQuery.of(context).size.width * 0.45, 50)),
                         backgroundColor: MaterialStateColor.resolveWith(
-                          (states) => Color.fromARGB(255, 237, 184, 124),
+                          (states) => Color.fromARGB(255, 143, 153, 226),
                         ),
                       ),
                     )
